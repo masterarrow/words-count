@@ -1,0 +1,17 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+cmd = "go build -gcflags='all=-N -l' -o ./wc ./cmd"
+
+full_bin = "/go/bin/dlv"
+args_bin = [
+    "exec", "./wc",
+    "--headless", "--listen=0.0.0.0:40000", "--api-version=2", "--accept-multiclient",
+    "--", "./test_400_words.txt"
+]
+
+delay = 1
+
+[log]
+show_timestamp = true

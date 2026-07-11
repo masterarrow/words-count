@@ -1,0 +1,23 @@
+services:
+  words-counts:
+    container_name: words-counts-app
+    restart: always
+    build: .
+    ports:
+      - "6379:6379"
+      - "40000:40000"
+    volumes:
+      - .:/app:rw,delegated
+    working_dir: /app
+    security_opt:
+      - "seccomp:unconfined"
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      - words-counts_network
+
+networks:
+  words-counts_network:
+    driver: bridge
+
+name: words-counts
