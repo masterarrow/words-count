@@ -3,5 +3,5 @@
 .vscode
 .env
 tmp
-lf
+wc
 !tmp/.gitkeep
